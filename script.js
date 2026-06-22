@@ -15,20 +15,22 @@ var balance = [500,
     750,
     2000,
     900]
-
 function login() {
-    // var email = prompt ("Enter Email")
-    // var password = prompt ("Enter Password")
+
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
 
-    var index = acc.indexOf("email")
-    if (index != -1, pass[index] === password) {
-        alert("login succesfully");
+    let index = acc.indexOf(email);
 
+    if (index !== -1 && pass[index] === password) {
 
-    }
-    else {
+        alert("Login Successfully");
+
+        window.location.href = "dashboard.html";
+
+    } else {
+
+        alert("Invalid Email or Password");
 
     }
 }
@@ -38,14 +40,130 @@ function signup() {
     let newEmail = document.getElementById("newEmail").value;
     let newPassword = document.getElementById("newPassword").value;
 
-    if (accounts.includes(newEmail)) {
-        alert("Account Already Exists");
+    if (acc.includes(newEmail)) {
+
+        // alert("Account Already Exists");
+
+         window.location.href = "dashboard.html";
         return;
     }
 
-    accounts.push(newEmail);
-    passwords.push(newPassword);
-    balances.push(0);
+    acc.push(newEmail);
+    pass.push(newPassword);
+    balance.push(0);
 
     alert("Account Created Successfully");
+
+     window.location.href = "dashboard.html";
+}
+
+function exitProgram(){
+    alert("Thank You For Using Sabia Bank");
+}
+
+function checkBalance(){
+
+    let email = prompt("Enter Your Email");
+
+    let index = acc.indexOf(email);
+
+    if(index !== -1){
+
+        alert(
+            "Account Holder: " + acc[index] +
+            "\nBalance: Rs. " + balance[index]
+        );
+
+    }else{
+
+        alert("Account Not Found");
+
+    }
+}
+
+function withdraw(){
+
+    let email = prompt("Enter Your Email");
+    let amount = Number(prompt("Enter Amount"));
+
+    let index = acc.indexOf(email);
+
+    if(index === -1){
+
+        alert("Account Not Found");
+        return;
+
+    }
+
+    if(amount > balance[index]){
+
+        alert("Insufficient Balance");
+
+    }else{
+
+        balance[index] -= amount;
+
+        alert(
+            "Withdrawal Successful" +
+            "\nRemaining Balance: Rs. " + balance[index]
+        );
+
+    }
+}
+
+function transfer(){
+
+    let sender = prompt("Enter Your Email");
+    let receiver = prompt("Enter Receiver Email");
+    let amount = Number(prompt("Enter Amount"));
+
+    let senderIndex = acc.indexOf(sender);
+    let receiverIndex = acc.indexOf(receiver);
+
+    if(senderIndex === -1 || receiverIndex === -1){
+
+        alert("Invalid Account");
+        return;
+
+    }
+
+    if(amount > balance[senderIndex]){
+
+        alert("Insufficient Balance");
+
+    }else{
+
+        balance[senderIndex] -= amount;
+        balance[receiverIndex] += amount;
+
+        alert("Transfer Successful");
+
+    }
+}
+
+function deposit(){
+
+    let email = prompt("Enter Your Email");
+    let amount = Number(prompt("Enter Deposit Amount"));
+
+    let index = acc.indexOf(email);
+
+    if(index === -1){
+
+        alert("Account Not Found");
+        return;
+
+    }
+
+    balance[index] += amount;
+
+    alert(
+        "Deposit Successful" +
+        "\nCurrent Balance: Rs. " + balance[index]
+    );
+
+    if(amount <= 0){
+    alert("Please Enter a Valid Amount");
+    return;
+}
 }

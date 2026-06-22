@@ -64,3 +64,72 @@ nav{
  text-decoration: none;
 }
 
+.exit {
+     background-color:red;
+    color: white;
+    height: 50px;
+    width: 100px;
+ padding: 15px;
+  font-size: 16px;         /* text size */
+    font-weight: 600;        /* bold */
+    font-family: Arial, sans-serif;
+ text-decoration: none;
+}
+
+/* Hero Section */
+
+.hero{
+    text-align:center;
+    margin-top:80px;
+}
+
+.hero h1{
+    font-size:55px;
+    color:#0033cc;
+}
+
+.hero p{
+    font-size:20px;
+    color:#555;
+    margin-top:15px;
+}
+
+.hero-btn{
+    display:inline-block;
+    margin-top:25px;
+    padding:14px 30px;
+    background:#0033cc;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+/* Cards Section */
+
+.services{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin-top:80px;
+    flex-wrap:wrap;
+}
+
+.card{
+    width:280px;
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 0 15px rgba(0,0,0,0.1);
+}
+
+.card h2{
+    color:#0033cc;
+    margin-bottom:15px;
+}
+
+.card p{
+    color:#666;
+    line-height:1.5;
+}
